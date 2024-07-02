@@ -1,0 +1,20 @@
+{
+    "name": "Honey Pot PWA",
+    "short_name": "HoneyPot",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#FDEDF2",
+    "theme_color": "#F9CADA",
+    "icons": [
+        {
+            "src": "icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
