@@ -16,7 +16,7 @@ const openai = new OpenAI({
 app.post('/generate', async (req, res) => {
     try {
         // Define your custom prompt for generating compliments
-        const prompt = 'Generate a short, flirty, romantic poem with 4 verses (maximum 140 characters in total) to praise my girlfriend. Use also cute emoticons (max 2)';
+        const prompt = 'Generate a short, flirty, romantic poem with 4 verses (maximum 140 characters in total, 35 character top for each verse) to praise my girlfriend. Use also cute emoticons (max 2)';
 
         const completion = await openai.chat.completions.create({
             model: 'gpt-4',
