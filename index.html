@@ -131,15 +131,6 @@
 
     <script>
 
-if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(function(registration) {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }).catch(function(error) {
-                    console.log('ServiceWorker registration failed: ', error);
-                });
-        }
-        
         let clickCount = 0;
         const maxClicks = 4;
 
@@ -161,7 +152,7 @@ if ('serviceWorker' in navigator) {
             document.getElementById('responseDisplay').style.display = 'none'; // Hide response display initially
 
             try {
-                const response = await fetch('http://localhost:3000/generate', {
+                const response = await fetch('https://honey-app-eta.vercel.app/generate', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
