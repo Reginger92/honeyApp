@@ -131,57 +131,52 @@
 
     <script>
 
-        let clickCount = 0;
-        const maxClicks = 4;
+let clickCount = 0;
+const maxClicks = 4;
 
-        document.getElementById('submitButton').addEventListener('click', async function() {
-            clickCount += 1;
+document.getElementById('submitButton').addEventListener('click', async function() {
+    clickCount += 1;
 
-            if (clickCount >= maxClicks) {
-                document.getElementById('submitButton').style.display = 'none';
-                document.getElementById('limitMessage').style.display = 'block';
-                document.getElementById('finalImage').style.display = 'block';
-                document.getElementById('container').style.display = 'none'; // Hide the container
-                return;
-            }
+    if (clickCount >= maxClicks) {
+        document.getElementById('submitButton').style.display = 'none';
+        document.getElementById('limitMessage').style.display = 'block';
+        document.getElementById('finalImage').style.display = 'block';
+        document.getElementById('container').style.display = 'none'; // Hide the container
+        return;
+    }
 
-            document.getElementById('submitButton').style.display = 'none'; // Hide the button
-            document.getElementById('initialImage').style.display = 'none'; // Hide the initial image
-            document.getElementById('container').style.display = 'block'; // Show the container on first click
-            document.getElementById('loadingMessage').style.display = 'block'; // Show loading message
-            document.getElementById('responseDisplay').style.display = 'none'; // Hide response display initially
+    document.getElementById('submitButton').style.display = 'none'; // Hide the button
+    document.getElementById('initialImage').style.display = 'none'; // Hide the initial image
+    document.getElementById('container').style.display = 'block'; // Show the container on first click
+    document.getElementById('loadingMessage').style.display = 'block'; // Show loading message
+    document.getElementById('responseDisplay').style.display = 'none'; // Hide response display initially
 
-            try {
-                const response = await fetch('https://honey-app-eta.vercel.app/generate', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({})
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-
-                const data = await response.json();
-                const generatedText = data.content.trim();
-
-                // Process the response to replace newline characters with <br> tags
-                const formattedText = generatedText.replace(/(\r\n|\n|\r)/g, '<br>');
-
-                // Use innerHTML to render the formatted text with line breaks
-                document.getElementById('responseDisplay').innerHTML = formattedText;
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('responseDisplay').innerText = 'An error occurred while fetching the response.';
-            } finally {
-                document.getElementById('loadingMessage').style.display = 'none'; // Hide loading message
-                document.getElementById('responseDisplay').style.display = 'block'; // Show response display
-                document.getElementById('submitButton').style.display = 'inline-block'; // Show the button again
-                document.getElementById('submitButton').innerHTML = "Give me more honey";
-            }
+    try {
+        const response = await fetch('https://honey-app-eta.vercel.app/generate', { // Replace with your actual Vercel URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
         });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        const data = await response.json();
+        console.log('Success:', data);
+        document.getElementById('responseDisplay').innerHTML = data.content.trim().replace(/(\r\n|\n|\r)/g, '<br>');
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('responseDisplay').innerText = 'An error occurred while fetching the response.';
+    } finally {
+        document.getElementById('loadingMessage').style.display = 'none'; // Hide loading message
+        document.getElementById('responseDisplay').style.display = 'block'; // Show response display
+        document.getElementById('submitButton').style.display = 'inline-block'; // Show the button again
+        document.getElementById('submitButton').innerHTML = "Give me more honey";
+    }
+});
     </script>
 </body>
 </html>
