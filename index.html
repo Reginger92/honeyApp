@@ -1,47 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MariaApp</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
+    <title>honeyApp PWA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<style>
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f4a19f; /* Strong pink background color */
+            background: linear-gradient(135deg, #F9CADA, #FDEDF2);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             text-align: center;
             flex-direction: column;
+            font-family: 'Poppins', sans-serif;
         }
 
         #container {
             display: none; /* Initially hide the container */
-            background-color: #fdf6f4; /* Lighter pink background color */
-            width: 70%;
+            background-color: #FFFFFF; /* Lighter pink background color */
+            width: 75%;
             max-width: 600px;
             padding: 20px;
             border-radius: 10px;
-            margin-bottom: 20px; /* Add margin to separate from button */
+            margin-bottom: 30px; /* Add margin to separate from button */
         }
 
         #submitButton {
-            display: inline-block;
-            padding: 15px 25px;
-            font-size: 18px;
-            color: #333;
-            background-color: #fdf6f4; /* Lighter pink background color */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 18px;
+    color: #333;
+    background: linear-gradient(135deg, #FFFFFF, #FDEDF2); /* Lighter gradient background */
+    border: none;
+    border-radius: 25px; /* More rounded corners */
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
 
-        #submitButton:active {
-            background-color: #fdf6f4;
-        }
+#submitButton:hover {
+    background: linear-gradient(135deg, #FDEDF2, #FFFFFF); /* Slight color change on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+#submitButton:active {
+    background: linear-gradient(135deg, #FFFFFF, #FDEDF2); /* Maintain gradient on active */
+    transform: translateY(0); /* Reset transform on active */
+}
 
         #responseDisplay {
             font-size: 18px;
@@ -53,7 +79,7 @@
         #limitMessage {
             display: none; /* Initially hide the message */
             padding: 20px;
-            background-color: #fdf6f4; /* Lighter pink background color */
+            background-color: #FFFFFF; /* Lighter pink background color */
             border: none;
             text-align: center;
             z-index: 1000;
@@ -72,10 +98,15 @@
         }
 
         #initialImage {
-            width: 250px; /* Adjust size as needed */
-            height: auto;
-            margin-bottom: 20px;
-        }
+    width: 250px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 60px;
+    filter: brightness(1.1); /* Make colors more vibrant */
+    /*box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for floating effect */
+    /*border-radius: 15px; /* Slightly rounded corners to match the button style */
+    animation: shake 3s; /* Apply shake animation */
+    animation-iteration-count: infinite; /* Infinite repeat */
+}
 
         #finalImage {
             display: none; /* Initially hide the final picture */
