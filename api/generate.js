@@ -14,12 +14,12 @@ module.exports = async (req, res) => {
     const prompt = 'Generate a short, flirty, romantic poem with 4 verses (maximum 140 characters in total, 35 character top for each verse) to praise my girlfriend. Use also cute emoticons (max 2)';
     const completion = await openai.createChatCompletion({
       model: 'gpt-4',
-      messages: [{ role: 'system', content: prompt }],
+      messages: [{ role: 'user', content: prompt }],
     });
 
     res.status(200).json(completion.data.choices[0].message);
   } catch (error) {
     console.error('Error:', error.stack); // Log the error stack trace
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message, stack: error.stack });
   }
 };
