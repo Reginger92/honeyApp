@@ -1,0 +1,13 @@
+{
+  "name": "my-webapp",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node api/generate.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "openai": "^2.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0"
+  }
+}
