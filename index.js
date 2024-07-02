@@ -1,17 +1,19 @@
 const express = require('express');
-const OpenAI = require('openai');
+const { OpenAIApi, Configuration } = require('openai');
 const cors = require('cors');
 require('dotenv').config(); // Load environment variables from .env file
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 
-const openai = new OpenAI({
+const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY, // Access API key from environment variable
 });
+
+const openai = new OpenAIApi(configuration);
 
 app.post('/generate', async (req, res) => {
     try {
@@ -23,7 +25,7 @@ app.post('/generate', async (req, res) => {
             messages: [{ role: 'system', content: prompt }],
         });
 
-        res.json(completion.choices[0].message);
+        res.json(response.data.choices[0].message);
     } catch (error) {
         console.error('Error:', error); // Log the error details
         res.status(500).json({ error: error.message });
