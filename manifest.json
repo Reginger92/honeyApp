@@ -1,6 +1,6 @@
 {
-    "name": "HoneyApp",
-    "short_name": "HoneyApp",
+    "name": "HHoneyyy",
+    "short_name": "Honeyyy",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#F9CADA",
@@ -8,12 +8,12 @@
     "description": "A lovely app to generate romantic poems.",
     "icons": [
       {
-        "src": "/icons/icon-192x192.png",
+        "src": "honey192.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "/icons/icon-512x512.png",
+        "src": "honey512.png",
         "sizes": "512x512",
         "type": "image/png"
       }
