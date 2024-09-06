@@ -1,6 +1,7 @@
 {
   "name": "my-webapp",
   "version": "1.0.0",
+  "type": "module",  // This enables ES modules in Node.js
   "scripts": {
     "start": "node api/generate.js"
   },
