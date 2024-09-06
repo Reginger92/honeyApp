@@ -1,10 +1,10 @@
-import OpenAI from "openai";
+import OpenAI from 'openai';
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY, // Access API key from environment variable
+const client = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
 });
 
-module.exports = async (req, res) => {
+export default async (req, res) => {  // Use export default for ES module
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
@@ -26,14 +26,16 @@ module.exports = async (req, res) => {
             So search and seek, my darling Maria,
             The first gift waits where the Lion King sleeps at night!
         `;
-        const chatCompletion = await openai.chat.completions.create({
-            model: "gpt-4o",
+
+        const chatCompletion = await client.chat.completions.create({
+            model: "gpt-4",
             messages: [{ role: "user", content: prompt }],
         });
 
         res.status(200).json(chatCompletion.choices[0].message);
     } catch (error) {
-        console.error('Error:', error); // Log the error details
+        console.error('Error:', error);
         res.status(500).json({ error: error.message });
     }
 };
+
