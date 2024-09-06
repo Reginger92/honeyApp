@@ -28,7 +28,7 @@ export default async (req, res) => {  // Use export default for ES module
         `;
 
         const chatCompletion = await client.chat.completions.create({
-            model: "gpt-4",
+            model: "gpt-4o",
             messages: [{ role: "user", content: prompt }],
         });
 
