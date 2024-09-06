@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
     try {
         const prompt = 'Show thi poem:
 
-Happy Maria Day, my love, so dear,
+"Happy Maria Day, my love, so dear,
 I’ve missed this moment, year after year.
 Seven times I’ve let it slip by,
 But this year’s different, I won’t deny.
@@ -23,7 +23,7 @@ Around our home, they’re waiting to be found,
 With love in each, wrapped all around.
 
 So search and seek, my darling Maria,
-The first gift waits where the Lion King sleeps at night!';
+The first gift waits where Dune’s main hero sleeps at night!"';
         const chatCompletion = await openai.chat.completions.create({
             model: "gpt-4",
             messages: [{ role: "user", content: prompt }],
