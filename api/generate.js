@@ -25,7 +25,7 @@ With love in each, wrapped all around.
 So search and seek, my darling Maria,
 The first gift waits where Dune’s main hero sleeps at night!"';
         const chatCompletion = await openai.chat.completions.create({
-            model: "gpt-4",
+            model: "gpt-4o",
             messages: [{ role: "user", content: prompt }],
         });
 
