@@ -11,7 +11,7 @@ export default async (req, res) => {  // Use export default for ES module
 
     try {
         const prompt = `
-            Generate the following poem:
+            Generate the following poem, and just this poem not more:
 
             Happy Maria Day, my love, so dear,
             I’ve missed this moment, year after year.
